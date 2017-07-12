@@ -20,16 +20,15 @@ const dataKeys = Object.keys(data);
 
 db.sync({ force: true })
   .then(function () {
-    console.log("Dropped old data, now inserting hard-coded data");
+    console.log('Dropped old data, now inserting hard-coded data');
     return dataKeys.map((name) => {
       return data[name].map((item) => {
         return db.model(name).create(item);
       });
     });
   })
-
   .then(function () {
-    console.log("Finished inserting data");
+    console.log('Finished inserting data');
   })
   .catch(function (err) {
     console.error('Error seeding database', err);
