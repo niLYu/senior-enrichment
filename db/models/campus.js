@@ -3,7 +3,7 @@ var Sequelize = require('sequelize')
 var db = require('../index.js')
 
 var Campus = db.define('campus', {
-  campusName: {
+  name: {
     type: Sequelize.STRING,
     allowNull: false,
   },
