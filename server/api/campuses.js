@@ -14,7 +14,7 @@ api.get('/', (req, res, next) => {
 
 api.get('/:campusId', (req, res, next) => {
   const campusId = req.params.campusId;
-  Campus.findById({ campusId })
+  Campus.findById( campusId )
     .then(campus => res.json({
       message: 'one campus',
       campus

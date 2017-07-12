@@ -14,7 +14,7 @@ api.get('/', (req, res, next) => {
 
 api.get('/:studentId', (req, res, next) => {
   const studentId = req.params.studentId;
-  Student.findById({ studentId })
+  Student.findById( studentId )
     .then(student => res.json({
       message: 'one student',
       student
@@ -23,6 +23,7 @@ api.get('/:studentId', (req, res, next) => {
 })
 
 api.post('/', (req, res, next) => {
+  console.log(req.body);
   Student.findOrCreate({
     where: {
       name: req.body.name,
