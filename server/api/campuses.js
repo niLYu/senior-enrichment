@@ -46,4 +46,14 @@ api.put('/:campusId', (req, res, next) => {
   .catch(next)
 })
 
+api.delete('/:campusId', (req, res, next) => {
+  Campus.destroy({
+    where: {id: req.params.campusId}
+  })
+  .then(deletedCampus => {
+    res.json(deletedCampus)
+  })
+  .catch(next)
+})
+
 module.exports = api
