@@ -10,10 +10,16 @@ var Student = db.define('student', {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: {
+      msg: 'A user with this email address already exists.'
+    },
     validate: {
-      isEmail: true
+      isEmail: {
+        msg: 'Please enter a valid email address.'
+      }
     }
   }
 })
 
 module.exports = Student;
+

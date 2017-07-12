@@ -23,12 +23,7 @@ api.get('/:campusId', (req, res, next) => {
 })
 
 api.post('/', (req, res, next) => {
-  Campus.findOrCreate({
-    where: {
-      campusName: req.body.campusName,
-      image: req.body.image
-    }
-  })
+  Campus.create(req.body)
   .then(newCampus => {
     res.json(newCampus);
   })
