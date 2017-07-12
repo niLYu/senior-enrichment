@@ -25,7 +25,6 @@ api.get('/:studentId', (req, res, next) => {
 api.post('/', (req, res, next) => {
   Student.create(req.body)
   .then(newStudent => {
-    console.log(newStudent);
     res.json(newStudent);
   })
   .catch(next)
