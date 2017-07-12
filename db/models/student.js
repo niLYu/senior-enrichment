@@ -2,7 +2,7 @@
 var Sequelize = require('sequelize')
 var db = require('../index.js')
 
-var User = db.define('user', {
+var Student = db.define('student', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -16,4 +16,4 @@ var User = db.define('user', {
   }
 })
 
-module.exports = User;
+module.exports = Student;
