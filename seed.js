@@ -17,7 +17,6 @@ const data = {
 
 const dataKeys = Object.keys(data);
 
-
 db.sync({ force: true })
   .then(function () {
     console.log('Dropped old data, now inserting hard-coded data');
