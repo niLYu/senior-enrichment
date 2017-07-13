@@ -1,28 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchStudent } from '../reducers/student';
 
-function Student(props) {
+class Student extends Component {
 
-  const urlId = +props.history.location.pathname.slice(10);
-  const studentsArr = props.students.students;
+  componentDidMount() {
+    const urlId = +this.props.history.location.pathname.slice(10);
+    this.props.fetchStudent(urlId);
+  }
 
-  const filteredStudent = studentsArr
-    ? studentsArr.filter(student => {
-        return student.id === urlId;})
-    : 'No students';
+  render() {
+    const studentById = this.props.student;
+    return (
+      <div>
+        {studentById &&
+          <div>
+            <h2 className='studentName'>{studentById.name}</h2>
+            <h2 className='email'>{studentById.email}</h2>
+            <h2 className='studentCampus'>{studentById.campusId}</h2>
+          </div>}
+      </div>
 
-  return (
-    <div>
-       <h3>{filteredStudent[0].name}</h3>
-    </div>
-  )
-
+    )
+  }
 }
 
 const mapStateToProps = function (state) {
   return {
-    students: state.students
+    student: state.student
   };
 }
 
-export default connect(mapStateToProps)(Student);
+const mapDispatchToProps = { fetchStudent };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Student);

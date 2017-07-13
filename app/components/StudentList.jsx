@@ -10,9 +10,8 @@ class StudentList extends Component {
   }
 
   render() {
-
-    const listOfStudents = this.props.students.students;
-
+    const listOfStudents = this.props.students;
+    console.log(this.props)
     return (
       <div className="listOfStudents">
         <h2>List of Students</h2>
