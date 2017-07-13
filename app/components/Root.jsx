@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Campuses from './CampusList';
 import Students from './StudentList';
+import Student from './Student';
 
 export default function Root() {
 
@@ -15,7 +16,8 @@ export default function Root() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/campuses" component={Campuses} />
-            <Route path="/students" component={Students} />
+            <Route exact path="/students" component={Students} />
+            <Route path="/students/:id" component={Student} />
             <Route component={Home} />
           </Switch>
         </div>

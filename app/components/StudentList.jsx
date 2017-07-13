@@ -1,48 +1,43 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { fetchStudents } from '../reducers/students';
 
 class StudentList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {students: []};
-  }
 
   componentDidMount() {
     this.props.fetchStudents();
   }
 
   render() {
-    console.log(this.props);
+
     const listOfStudents = this.props.students.students;
 
     return (
       <div className="listOfStudents">
         <h2>List of Students</h2>
-          <ul>
-              {listOfStudents && listOfStudents.map( student => {
-                return (
-                  <li className='student' key={student.id}>
-                    <NavLink to={`/students/${student.name}`}>
-                      {student.name}
-                    </NavLink>
-                  </li>
-                )
-              })}
+        <ul>
+          {listOfStudents && listOfStudents.map(student => {
+            return (
+              <li className='student' key={student.id}>
+                <NavLink to={`/students/${student.id}`}>
+                  {student.name}
+                </NavLink>
+              </li>
+            )
+          })}
         </ul>
       </div>
     )
   }
 }
 
-const mapStateToProps = function(state) {
+const mapStateToProps = function (state) {
   return {
     students: state.students
   };
 }
 
-const mapDispatchToProps = {fetchStudents}
+const mapDispatchToProps = { fetchStudents }
 
 export default connect(mapStateToProps, mapDispatchToProps)(StudentList);

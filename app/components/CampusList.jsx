@@ -4,11 +4,6 @@ import { connect } from 'react-redux';
 import { fetchCampuses } from '../reducers/campuses';
 
 class CampusList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {campuses: []};
-  }
 
   componentDidMount() {
     this.props.fetchCampuses();
