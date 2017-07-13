@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './Home';
 import store from '../store';
 import Navbar from './Navbar';
+import Home from './Home';
+import Campuses from './CampusList'
 import { fetchCampuses } from '../reducers/campuses';
 import { fetchStudents } from '../reducers/students';
 
@@ -24,6 +25,7 @@ export default class Root extends Component {
           <Navbar />
           <Switch>
             <Route exact path='/' component={Home}/>
+            <Route path ='/campuses' component={Campuses}/>
             <Route component ={Home} />
           </Switch>
           </div>
