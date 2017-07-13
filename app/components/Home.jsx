@@ -1,18 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CampusList from './CampusList';
-function Home (props) {
+import StudentList from './StudentList';
 
+function Home (props) {
   return (
     <div className="home">
-      <CampusList allCampuses={props.campuses}/>
+      <CampusList allCampuses={props.campuses} />
+      <StudentList allStudents={props.students} />
     </div>
   )
 }
 
-const mapStateToProps = function (state, ownProps) {
+const mapStateToProps = function (state) {
   return {
-    campuses: state.campuses
+    campuses: state.campuses,
+    students: state.students
   };
 };
 
