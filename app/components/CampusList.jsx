@@ -12,7 +12,7 @@ class CampusList extends Component {
   render() {
 
     const listOfCampuses = this.props.campuses;
-    console.log(listOfCampuses)
+
     return (
       <div className="listOfCampuses">
         <h1>List of Campuses</h1>

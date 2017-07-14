@@ -6,7 +6,7 @@ import { fetchStudent, fetchStudents, removeStudent } from '../reducers/students
 class Student extends Component {
   constructor(props) {
     super(props);
-    this.click = this.click.bind(this);
+    this.clickDelete = this.clickDelete.bind(this);
   }
 
   componentDidMount() {
@@ -14,7 +14,7 @@ class Student extends Component {
     this.props.fetchStudent(urlId);
   }
 
-  click(event) {
+  clickDelete(event) {
     this.props.removeStudent(event.target.value)
     this.props.history.push('/students');
   }
@@ -36,7 +36,7 @@ class Student extends Component {
             }
             <div >
               <button
-                onClick={this.click}
+                onClick={this.clickDelete}
                 type="button"
                 value={studentById.id}>
                 DELETE
