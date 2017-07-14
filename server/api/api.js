@@ -7,13 +7,6 @@ const db = require('../../db')
 	// Ideally you would have something to handle this, so if you have time try that out!
 
 
-api.get('/', (req, res, next) => {
-	res.json({
-		home: 'successful'
-	})
-	.catch(next)
-})
-
 api.use('/campuses', require('./campuses'));
 api.use('/students', require('./students'));
 

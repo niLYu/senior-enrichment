@@ -1,6 +1,7 @@
 'use strict';
 var Sequelize = require('sequelize')
 var db = require('../index.js')
+const Campus = require('./campus')
 
 var Student = db.define('student', {
   name: {
@@ -18,6 +19,10 @@ var Student = db.define('student', {
         msg: 'Please enter a valid email address.'
       }
     }
+  }
+}, {
+  defaultScope: {
+    include: [Campus]
   }
 })
 

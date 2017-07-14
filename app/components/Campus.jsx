@@ -10,7 +10,6 @@ class Campus extends Component {
   }
 
   render() {
-    console.log(this.props);
     const campusById = this.props.campus;
     return (
       <div>

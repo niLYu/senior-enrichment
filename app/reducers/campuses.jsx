@@ -37,7 +37,7 @@ export function fetchCampus (campusId) {
     return axios.get(`/api/campuses/${campusId}`)
       .then(res => res.data)
       .then( campus => {
-        const action = getCampuses(campus);
+        const action = getCampus(campus);
         dispatch(action)
     });
   }
