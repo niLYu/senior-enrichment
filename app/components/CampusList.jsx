@@ -11,16 +11,16 @@ class CampusList extends Component {
 
   render() {
 
-    const listOfCampuses = this.props.campuses.campuses;
+    const listOfCampuses = this.props.campuses;
 
     return (
       <div className="listOfCampuses">
         <h1>List of Campuses</h1>
         <ul>
-          {listOfCampuses && listOfCampuses.map(campus => {
+          {listOfCampuses.length && listOfCampuses.map(campus => {
             return (
               <li key={campus.id}>
-                <NavLink to={`/campuses/${campus.name}`}>
+                <NavLink to={`/campuses/${campus.id}`}>
                   {campus.name}
                 </NavLink>
               </li>

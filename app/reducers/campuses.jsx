@@ -3,11 +3,17 @@ import axios from 'axios';
 /* ---------------- ACTIONS ----------------- */
 
 const GET_CAMPUSES = 'GET_CAMPUSES';
+const GET_CAMPUS_BY_ID = 'GET_CAMPUS_BY_ID';
 
 /* ---------------- ACTION CREATORS ----------------- */
 
-export function getCampuses (campuses) {
+function getCampuses (campuses) {
   const action = { type: GET_CAMPUSES, campuses};
+  return action;
+}
+
+function getCampus (campus) {
+  const action = { type: GET_CAMPUS_BY_ID, campus};
   return action;
 }
 
@@ -25,6 +31,18 @@ export function fetchCampuses () {
   }
 }
 
+export function fetchCampus (campusId) {
+
+  return function thunk (dispatch) {
+    return axios.get(`/api/campuses/${campusId}`)
+      .then(res => res.data)
+      .then( campus => {
+        const action = getCampuses(campus);
+        dispatch(action)
+    });
+  }
+}
+
 // REDUCER
 
 export default function reducer (state = [], action) {
@@ -34,7 +52,11 @@ export default function reducer (state = [], action) {
     case GET_CAMPUSES:
       return action.campuses;
 
+    case GET_CAMPUS_BY_ID:
+      return action.campus;
+
     default:
       return state;
   }
 }
+
