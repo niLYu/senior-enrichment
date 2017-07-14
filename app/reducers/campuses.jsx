@@ -5,6 +5,7 @@ import axios from 'axios';
 const GET_CAMPUSES = 'GET_CAMPUSES';
 const GET_CAMPUS_BY_ID = 'GET_CAMPUS_BY_ID';
 const DELETE_CAMPUS = 'DELETE_CAMPUS';
+const ADD_CAMPUS = 'ADD_CAMPUS';
 
 /* ---------------- ACTION CREATORS ----------------- */
 
@@ -20,6 +21,11 @@ function getCampus (campus) {
 
 function deleteCampus (campus) {
   const action = { type: DELETE_CAMPUS, campus};
+  return action;
+}
+
+function addCampus (campus) {
+  const action = { type: ADD_CAMPUS, campus};
   return action;
 }
 
@@ -56,6 +62,13 @@ export function removeCampus (id) {
   }
 }
 
+export function createCampus (campus) {
+  return function thunk (dispatch) {
+    return axios.post('/api/campuses', campus)
+    .then(() => dispatch(addCampus(campus)))
+  }
+}
+
 // REDUCER
 
 export default function reducer (state = [], action) {
@@ -69,6 +82,9 @@ export default function reducer (state = [], action) {
       return action.campus;
 
     case DELETE_CAMPUS:
+      return action.campus;
+
+    case ADD_CAMPUS:
       return action.campus;
 
     default:

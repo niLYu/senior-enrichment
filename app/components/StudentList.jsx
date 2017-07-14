@@ -26,6 +26,12 @@ class StudentList extends Component {
             )
           })}
         </ul>
+        <div>
+          <button
+            onClick={this.addStudent}
+            type="button">
+            </button>
+        </div>
       </div>
     )
   }

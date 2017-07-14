@@ -15,6 +15,7 @@ class Student extends Component {
   }
 
   clickDelete(event) {
+    event.preventDefault();
     this.props.removeStudent(event.target.value)
     this.props.history.push('/students');
   }

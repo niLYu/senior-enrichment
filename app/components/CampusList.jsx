@@ -1,10 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchCampuses } from '../reducers/campuses';
 
 class CampusList extends Component {
-
   componentDidMount() {
     this.props.fetchCampuses();
   }
@@ -24,10 +23,18 @@ class CampusList extends Component {
                   {campus.name}
                 </NavLink>
               </li>
-              )
-            })
+            )
+          })
           }
         </ul>
+        <NavLink to={`/campuses/add`}>
+          <button
+            onClick={this.clickAdd}
+            type="button"
+            value=''>
+            Add a campus
+        </button>
+        </NavLink>
       </div>
     )
   }
@@ -39,6 +46,6 @@ const mapStateToProps = function (state) {
   };
 };
 
-const mapDispatchToProps = {fetchCampuses}
+const mapDispatchToProps = { fetchCampuses }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CampusList);

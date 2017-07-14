@@ -14,7 +14,8 @@ class Campus extends Component {
     this.props.fetchCampus(urlId);
   }
 
-   clickDelete (event) {
+  clickDelete(event) {
+    event.preventDefault();
     this.props.removeCampus(event.target.value)
     this.props.history.push('/campuses');
   }
@@ -23,19 +24,20 @@ class Campus extends Component {
     const campusById = this.props.campus;
     return (
       <div>
-         {campusById &&
+        {campusById &&
           <div>
             <h2 className='campusName'>{campusById.name}</h2>
             {Array.isArray(campusById.students) &&
-              campusById.students.map( student => {
+              campusById.students.map(student => {
                 return (
-                <li key={student.id}>
-                  <NavLink to={`/students/${student.id}`}>
-                    {student.name}
-                  </NavLink>
-                </li>
+                  <li key={student.id}>
+                    <NavLink to={`/students/${student.id}`}>
+                      {student.name}
+                    </NavLink>
+                  </li>
                 )
-            })}
+              })
+            }
             <div >
               <button
                 onClick={this.clickDelete}
@@ -44,7 +46,8 @@ class Campus extends Component {
                 DELETE THIS CAMPUS
                 </button>
             </div>
-          </div>}
+          </div>
+        }
       </div>
     )
   }

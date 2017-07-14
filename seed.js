@@ -5,7 +5,9 @@ const db = require('./db');
 const data = {
   campus: [
     { name: 'Fullstack Academy', image: 'FSAplaceholder' },
-    { name: 'GraceHopper Academy', image: 'GHplaceholder' }
+    { name: 'GraceHopper Academy', image: 'GHplaceholder' },
+    { name: 'App Academy', image: 'AAplaceholder' },
+    { name: 'Flatiron School', image: 'FIplaceholder' }
   ],
   student: [
     { name: 'John Doe', email: 'johndoe@gmail.com', campusId: 1 },
