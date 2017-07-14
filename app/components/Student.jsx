@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchStudent } from '../reducers/students';
-import { fetchCampus } from '../reducers/campuses';
-
+import { NavLink } from 'react-router-dom';
+import { fetchStudent, fetchStudents, removeStudent } from '../reducers/students';
 
 class Student extends Component {
+  constructor(props) {
+    super(props);
+    this.click = this.click.bind(this);
+  }
+
   componentDidMount() {
     const urlId = +this.props.history.location.pathname.slice(10);
     this.props.fetchStudent(urlId);
   }
 
+  click (event) {
+    this.props.removeStudent(event.target.value)
+    this.props.fetchStudents()
+    this.props.history.push('/students');
+  }
+
   render() {
+
     const studentById = this.props.student;
 
     return (
@@ -20,8 +31,18 @@ class Student extends Component {
             <h2 className='studentName'>{studentById.name}</h2>
             <h2 className='email'>{studentById.email}</h2>
             {studentById.campus &&
+            <NavLink to={`/campuses/${studentById.campus.id}`}>
             <h2 className='studentCampus'>{studentById.campus.name}</h2>
+            </NavLink >
             }
+              <div >
+                <button
+                  onClick={this.click}
+                  type="button"
+                  value={studentById.id}>
+                  DELETE
+                </button>
+              </div>
           </div>}
       </div>
 
@@ -35,6 +56,6 @@ const mapStateToProps = function (state) {
   };
 }
 
-const mapDispatchToProps = { fetchStudent, fetchCampus };
+const mapDispatchToProps = { fetchStudent, fetchStudents, removeStudent };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Student);
