@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { fetchCampus } from '../reducers/campuses';
 
 class Campus extends Component {
@@ -9,15 +10,30 @@ class Campus extends Component {
     this.props.fetchCampus(urlId);
   }
 
+   click (event) {
+    this.props.removeCampus(event.target.value)
+    this.props.fetchCampus()
+    this.props.history.push('/campuses');
+  }
+
   render() {
+    console.log(this.props)
     const campusById = this.props.campus;
     return (
       <div>
          {campusById &&
           <div>
-            <h2 className='studentName'>{campusById.name}</h2>
-            <h2 className='email'>{campusById.email}</h2>
-            <h2 className='studentCampus'>{campusById.campusId}</h2>
+            <h2 className='campusName'>{campusById.name}</h2>
+            {Array.isArray(campusById.students) &&
+              campusById.students.map( student => {
+                return (
+                <li key={student.id}>
+                  <NavLink to={`/students/${student.id}`}>
+                    {student.name}
+                  </NavLink>
+                </li>
+                )
+            })}
           </div>}
       </div>
 

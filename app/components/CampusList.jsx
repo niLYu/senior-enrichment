@@ -17,7 +17,7 @@ class CampusList extends Component {
       <div className="listOfCampuses">
         <h1>List of Campuses</h1>
         <ul>
-          {listOfCampuses.length && listOfCampuses.map(campus => {
+          {Array.isArray(listOfCampuses) && listOfCampuses.map(campus => {
             return (
               <li key={campus.id}>
                 <NavLink to={`/campuses/${campus.id}`}>
