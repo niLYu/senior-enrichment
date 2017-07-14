@@ -5,6 +5,7 @@ import axios from 'axios';
 const GET_STUDENTS = 'GET_STUDENTS';
 const GET_STUDENT_BY_ID = 'GET_STUDENT_BY_ID'
 const DELETE_STUDENT = 'DELETE_STUDENT';
+const ADD_STUDENT = 'ADD_STUDENT';
 
 /* ---------------- ACTION CREATORS ----------------- */
 
@@ -22,6 +23,12 @@ function deleteStudent (student) {
   const action = { type: DELETE_STUDENT, student};
   return action;
 }
+
+function addStudent (student) {
+  const action = { type: ADD_STUDENT, student};
+  return action;
+}
+
 
 /* ------------------- THUNK CREATORS ------------- */
 
@@ -54,6 +61,13 @@ export function removeStudent (id) {
   }
 }
 
+export function createStudent (student) {
+  return function thunk (dispatch) {
+    return axios.post('/api/students', student)
+    .then(() => dispatch(addStudent(student)))
+  }
+}
+
 //REDUCER
 
 export default function reducer (state = [], action) {
@@ -68,6 +82,9 @@ export default function reducer (state = [], action) {
 
     case DELETE_STUDENT:
       return action.student
+
+    case ADD_STUDENT:
+      return action.student;
 
     default:
       return state;

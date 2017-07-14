@@ -26,12 +26,13 @@ class StudentList extends Component {
             )
           })}
         </ul>
-        <div>
+       <NavLink to={`/students/addstudent`}>
           <button
-            onClick={this.addStudent}
-            type="button">
-            </button>
-        </div>
+            type="button"
+            value=''>
+            Add a student
+        </button>
+        </NavLink>
       </div>
     )
   }

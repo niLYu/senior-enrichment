@@ -7,6 +7,7 @@ import Campus from './Campus';
 import AddCampus from './AddCampus';
 import Students from './StudentList';
 import Student from './Student';
+import AddStudent from './AddStudent';
 
 
 export default function Root() {
@@ -21,6 +22,7 @@ export default function Root() {
             <Route exact path="/campuses" component={Campuses} />
             <Route path ="/campuses/add" component={AddCampus} />
             <Route exact path="/students" component={Students} />
+            <Route path ="/students/addstudent" component={AddStudent} />
             <Route path="/campuses/:id" component={Campus} />
             <Route path="/students/:id" component={Student} />
             <Route component={Home} />
