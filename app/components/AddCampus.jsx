@@ -22,13 +22,11 @@ class AddCampus extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('state', this.state);
     this.props.createCampus(this.state);
     this.setState(this.state);
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

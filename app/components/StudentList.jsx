@@ -14,7 +14,7 @@ class StudentList extends Component {
 
     return (
       <div className="listOfStudents">
-        <h2>List of Students</h2>
+        <h1>Students</h1>
         <ul>
           {Array.isArray(listOfStudents) && listOfStudents.map(student => {
             return (

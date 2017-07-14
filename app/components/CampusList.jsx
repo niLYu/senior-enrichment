@@ -14,7 +14,7 @@ class CampusList extends Component {
 
     return (
       <div className="listOfCampuses">
-        <h1>List of Campuses</h1>
+        <h1>Campuses</h1>
         <ul>
           {Array.isArray(listOfCampuses) && listOfCampuses.map(campus => {
             return (
@@ -29,7 +29,6 @@ class CampusList extends Component {
         </ul>
         <NavLink to={`/campuses/add`}>
           <button
-            onClick={this.clickAdd}
             type="button"
             value=''>
             Add a campus

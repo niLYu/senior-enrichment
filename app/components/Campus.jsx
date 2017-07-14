@@ -23,7 +23,7 @@ class Campus extends Component {
   render() {
     const campusById = this.props.campus;
     return (
-      <div>
+      <div className='center'>
         {campusById &&
           <div>
             <h2 className='campusName'>{campusById.name}</h2>

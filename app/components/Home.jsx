@@ -4,7 +4,7 @@ import StudentList from './StudentList';
 
 export default function Home () {
   return (
-    <div className="home">
+    <div className="home center">
       <CampusList />
       <StudentList />
     </div>

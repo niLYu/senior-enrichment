@@ -27,7 +27,7 @@ class Student extends Component {
     return (
       <div>
         {studentById &&
-          <div>
+          <div className='center'>
             <h2 className='studentName'>{studentById.name}</h2>
             <h2 className='email'>{studentById.email}</h2>
             {studentById.campus &&

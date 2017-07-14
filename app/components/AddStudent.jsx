@@ -30,7 +30,6 @@ class AddStudent extends Component {
 
     for (let i = 0; i < this.props.campuses.length; i++) {
       if (this.state.campusId == this.props.campuses[i].name) {
-        console.log(this.state.campusId == this.props.campuses[i].name)
         campusAssoc = this.props.campuses[i].id;
       }
     }
@@ -51,7 +50,6 @@ class AddStudent extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
