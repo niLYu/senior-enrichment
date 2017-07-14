@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { fetchCampus } from '../reducers/campuses';
+import { fetchCampus, removeCampus } from '../reducers/campuses';
 
 class Campus extends Component {
+  constructor(props) {
+    super(props);
+    this.click = this.click.bind(this);
+  }
 
   componentDidMount() {
     const urlId = +this.props.history.location.pathname.slice(10);
@@ -12,12 +16,10 @@ class Campus extends Component {
 
    click (event) {
     this.props.removeCampus(event.target.value)
-    this.props.fetchCampus()
     this.props.history.push('/campuses');
   }
 
   render() {
-    console.log(this.props)
     const campusById = this.props.campus;
     return (
       <div>
@@ -34,9 +36,16 @@ class Campus extends Component {
                 </li>
                 )
             })}
+            <div >
+              <button
+                onClick={this.click}
+                type="button"
+                value={campusById.id}>
+                DELETE THIS CAMPUS
+                </button>
+            </div>
           </div>}
       </div>
-
     )
   }
 }
@@ -47,6 +56,6 @@ const mapStateToProps = function (state) {
   };
 }
 
-const mapDispatchToProps = { fetchCampus };
+const mapDispatchToProps = { fetchCampus, removeCampus };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Campus);

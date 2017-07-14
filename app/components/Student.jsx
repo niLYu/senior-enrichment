@@ -14,9 +14,8 @@ class Student extends Component {
     this.props.fetchStudent(urlId);
   }
 
-  click (event) {
+  click(event) {
     this.props.removeStudent(event.target.value)
-    this.props.fetchStudents()
     this.props.history.push('/students');
   }
 
@@ -26,23 +25,23 @@ class Student extends Component {
 
     return (
       <div>
-         {studentById &&
+        {studentById &&
           <div>
             <h2 className='studentName'>{studentById.name}</h2>
             <h2 className='email'>{studentById.email}</h2>
             {studentById.campus &&
-            <NavLink to={`/campuses/${studentById.campus.id}`}>
-            <h2 className='studentCampus'>{studentById.campus.name}</h2>
-            </NavLink >
+              <NavLink to={`/campuses/${studentById.campus.id}`}>
+                <h2 className='studentCampus'>{studentById.campus.name}</h2>
+              </NavLink >
             }
-              <div >
-                <button
-                  onClick={this.click}
-                  type="button"
-                  value={studentById.id}>
-                  DELETE
+            <div >
+              <button
+                onClick={this.click}
+                type="button"
+                value={studentById.id}>
+                DELETE
                 </button>
-              </div>
+            </div>
           </div>}
       </div>
 
