@@ -12,11 +12,6 @@ class Student extends Component {
 
   render() {
     const studentById = this.props.student;
-    // if(studentById.length) {
-    // this.props.fetchCampus(studentById.id)
-    // }
-
-    console.log(this.props);
 
     return (
       <div>
@@ -24,7 +19,9 @@ class Student extends Component {
           <div>
             <h2 className='studentName'>{studentById.name}</h2>
             <h2 className='email'>{studentById.email}</h2>
-            <h2 className='studentCampus'>{studentById.id}</h2>
+            {studentById.campus &&
+            <h2 className='studentCampus'>{studentById.campus.name}</h2>
+            }
           </div>}
       </div>
 

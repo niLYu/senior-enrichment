@@ -20,10 +20,6 @@ var Student = db.define('student', {
       }
     }
   }
-}, {
-  defaultScope: {
-    include: [Campus]
-  }
 })
 
 module.exports = Student;

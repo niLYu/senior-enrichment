@@ -1,7 +1,7 @@
 'use strict'
 
 const api = require('express').Router()
-const { Student } = require('../../db/models')
+const { Student, Campus } = require('../../db/models')
 
 api.get('/', (req, res, next) => {
   Student.findAll()
@@ -11,7 +11,9 @@ api.get('/', (req, res, next) => {
 
 api.get('/:studentId', (req, res, next) => {
   const studentId = req.params.studentId;
-  Student.findById( studentId )
+  Student.findOne({
+    where: {id: studentId},
+    include: {model: Campus, as: 'campus'}})
     .then(student => res.json(student))
     .catch(next)
 })
