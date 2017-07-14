@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchStudent } from '../reducers/student';
+import { fetchStudent } from '../reducers/students';
 
 class Student extends Component {
 
@@ -13,7 +13,7 @@ class Student extends Component {
     const studentById = this.props.student;
     return (
       <div>
-        {studentById &&
+         {studentById &&
           <div>
             <h2 className='studentName'>{studentById.name}</h2>
             <h2 className='email'>{studentById.email}</h2>
@@ -27,7 +27,7 @@ class Student extends Component {
 
 const mapStateToProps = function (state) {
   return {
-    student: state.student
+    student: state.students
   };
 }
 

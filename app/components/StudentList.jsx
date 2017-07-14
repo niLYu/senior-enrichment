@@ -16,7 +16,7 @@ class StudentList extends Component {
       <div className="listOfStudents">
         <h2>List of Students</h2>
         <ul>
-          {listOfStudents && listOfStudents.map(student => {
+          {listOfStudents.length && listOfStudents.map(student => {
             return (
               <li className='student' key={student.id}>
                 <NavLink to={`/students/${student.id}`}>
